@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">urFinance</a>
+      <button class="btn btn-outline-light" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">Welcome to Your Dashboard</h2>
+    
+    <!-- Overview Card -->
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-success text-white">
+        <h5>Financial Overview</h5>
+      </div>
+      <div class="card-body">
+        <div id="overview">Loading...</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Set Income -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-info text-white">
+            <h5>Set Monthly Income</h5>
+          </div>
+          <div class="card-body">
+            <input type="number" id="income" placeholder="Monthly Income (₹)" class="form-control mb-2">
+            <button onclick="setIncome()" class="btn btn-info w-100">Save Income</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add/Edit Expense -->
+      <div class="col-md-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-warning text-dark">
+            <h5>Add or Edit Expense</h5>
+          </div>
+          <div class="card-body">
+            <form id="add-expense">
+              <div class="row">
+                <div class="col-md-4">
+                  <input type="date" id="date" required class="form-control mb-2">
+                </div>
+                <div class="col-md-4">
+                  <input type="text" id="category" placeholder="Category" required class="form-control mb-2">
+                </div>
+                <div class="col-md-4">
+                  <input type="number" id="amount" placeholder="Amount (₹)" required class="form-control mb-2">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success w-100" id="add-expense-btn">Add Expense</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <!-- Expenses List -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-header bg-secondary text-white">
+            <h5>Expenses List</h5>
+          </div>
+          <div class="card-body">
+            <ul id="expenses-list" class="list-group"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="col-md-6">
+        <div class="card shadow-sm mb-3">
+          <div class="card-header bg-primary text-white">
+            <h5>Expenses by Category</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+        <div class="card shadow-sm">
+          <div class="card-header bg-danger text-white">
+            <h5>Monthly Expenses</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="monthlyChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
